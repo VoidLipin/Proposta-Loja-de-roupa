@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asaph Imobvídeos — Proposta Comercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --navy: #003566;
+    --navy-deep: #071B2E;
+    --ivory: #F7F4EE;
+    --ivory-dim: #EDE8DE;
+    --gold: #B8863B;
+    --gold-bright: #D4A65A;
+    --ink: #1A2733;
+    --line: rgba(0,53,102,0.14);
+    --line-dark: rgba(247,244,238,0.14);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--body);
+    background:var(--ivory);
+    color:var(--ink);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  ::selection{background:var(--gold);color:#fff;}
+
+  /* ---------- utility ---------- */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--gold);}
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 32px;
+    background:rgba(247,244,238,0.78);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    transition:background .3s ease;
+  }
+  .logo-mark{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--display);
+    font-weight:600;
+    font-size:19px;
+    color:var(--navy);
+    letter-spacing:0.01em;
+  }
+  .logo-mark span{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.16em;
+    color:var(--gold);
+    font-weight:500;
+    text-transform:uppercase;
+    border-left:1px solid var(--line);
+    padding-left:10px;
+  }
+  nav.links{display:flex;gap:34px;font-size:14px;font-weight:500;}
+  nav.links a{
+    position:relative;
+    color:var(--navy);
+    text-decoration:none;
+    opacity:0.75;
+  }
+  nav.links a:hover{opacity:1;}
+  @media (max-width:760px){ nav.links{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    background:var(--navy-deep);
+    color:var(--ivory);
+    padding:140px 32px 100px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 70% 55% at 85% 12%, rgba(184,134,59,0.20), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 10% 90%, rgba(0,53,102,0.55), transparent 65%);
+    pointer-events:none;
+  }
+  .hero-thread{
+    position:absolute;
+    top:0; right:8%;
+    width:1px; height:100%;
+    background:linear-gradient(to bottom, transparent, rgba(184,134,59,0.35) 20%, rgba(184,134,59,0.35) 80%, transparent);
+    opacity:0.6;
+  }
+  .hero-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;}
+  .hero .eyebrow{color:var(--gold-bright);margin-bottom:26px;}
+  .hero .eyebrow::before{background:var(--gold-bright);}
+  h1.hero-title{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(2.4rem, 6vw, 5.1rem);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    max-width:15ch;
+  }
+  h1.hero-title em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--gold-bright);
+  }
+  .hero-sub{
+    margin-top:30px;
+    max-width:46ch;
+    font-size:17px;
+    line-height:1.65;
+    color:rgba(247,244,238,0.68);
+  }
+  .hero-meta{
+    margin-top:60px;
+    display:flex;
+    gap:48px;
+    flex-wrap:wrap;
+    border-top:1px solid var(--line-dark);
+    padding-top:26px;
+  }
+  .hero-meta div{font-size:13px;color:rgba(247,244,238,0.5);}
+  .hero-meta strong{
+    display:block;
+    font-family:var(--mono);
+    font-size:14px;
+    color:var(--ivory);
+    margin-bottom:4px;
+    font-weight:500;
+  }
+  .scroll-cue{
+    position:absolute;bottom:38px;left:32px;
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:11px;letter-spacing:0.1em;
+    color:rgba(247,244,238,0.45);
+    z-index:2;
+  }
+  .scroll-cue .bar{width:1px;height:34px;background:rgba(247,244,238,0.3);position:relative;overflow:hidden;}
+  .scroll-cue .bar::after{
+    content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;
+    background:var(--gold-bright);
+    animation:scrollbar 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollbar{
+    0%{top:-100%;} 50%{top:0;} 100%{top:100%;}
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:120px 0;position:relative;}
+  .section-head{max-width:640px;margin-bottom:70px;}
+  .section-head h2{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(1.9rem,3.4vw,2.9rem);
+    line-height:1.15;
+    margin-top:18px;
+    color:var(--navy);
+  }
+  .section-head p{
+    margin-top:20px;
+    font-size:16px;
+    line-height:1.7;
+    color:rgba(26,39,51,0.68);
+  }
+
+  /* ---------- context / momento ---------- */
+  .momento{background:var(--ivory);}
+  .momento-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:start;
+  }
+  @media (max-width:860px){ .momento-grid{grid-template-columns:1fr;gap:40px;} }
+  .momento-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:36px;
+    position:relative;
+  }
+  .momento-card::before{
+    content:"";
+    position:absolute;top:0;left:0;width:3px;height:100%;
+    background:var(--gold);
+  }
+  .momento-card h3{
+    font-family:var(--display);
+    font-size:22px;
+    font-weight:600;
+    color:var(--navy);
+    margin-bottom:14px;
+  }
+  .momento-card p{font-size:15px;line-height:1.75;color:rgba(26,39,51,0.72);}
+  .momento-list{display:flex;flex-direction:column;gap:22px;}
+  .momento-item{display:flex;gap:16px;align-items:flex-start;}
+  .momento-item .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--gold);
+    margin-top:8px;flex-shrink:0;
+  }
+  .momento-item p{font-size:15px;line-height:1.6;color:rgba(26,39,51,0.75);}
+  .momento-item strong{color:var(--navy);font-weight:600;}
+
+  /* ---------- packages / etiquetas ---------- */
+  .pacotes{background:var(--navy-deep);color:var(--ivory);}
+  .pacotes .section-head h2{color:var(--ivory);}
+  .pacotes .section-head p{color:rgba(247,244,238,0.62);}
+  .pacotes .eyebrow{color:var(--gold-bright);}
+  .pacotes .eyebrow::before{background:var(--gold-bright);}
+
+  .rack{
+    display:flex;
+    align-items:flex-start;
+    gap:28px;
+    overflow-x:auto;
+    padding:20px 4px 40px;
+    scroll-snap-type:x proximity;
+  }
+  .rack::-webkit-scrollbar{height:6px;}
+  .rack::-webkit-scrollbar-thumb{background:rgba(247,244,238,0.2);border-radius:10px;}
+
+  .tag{
+    scroll-snap-align:start;
+    flex:0 0 280px;
+    position:relative;
+    background:var(--ivory);
+    color:var(--ink);
+    border-radius:6px 6px 14px 14px;
+    padding:38px 26px 30px;
+    transform:rotate(-1.4deg);
+    box-shadow:0 24px 50px -20px rgba(0,0,0,0.5);
+  }
+  .tag:nth-child(2n){transform:rotate(1.1deg);}
+  .tag-hole{
+    position:absolute;
+    top:16px; left:50%;
+    transform:translateX(-50%);
+    width:16px;height:16px;
+    border-radius:50%;
+    background:var(--navy-deep);
+    box-shadow:inset 0 2px 4px rgba(0,0,0,0.4);
+  }
+  .tag-hole::after{
+    content:"";
+    position:absolute;
+    top:-46px;left:50%;
+    transform:translateX(-50%);
+    width:1px;height:46px;
+    background:repeating-linear-gradient(to bottom, rgba(247,244,238,0.35) 0 4px, transparent 4px 8px);
+  }
+  .tag-name{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-top:14px;
+  }
+  .tag-title{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:23px;
+    margin-top:8px;
+    color:var(--navy);
+    line-height:1.2;
+  }
+  .tag-price{
+    font-family:var(--mono);
+    font-size:28px;
+    font-weight:500;
+    color:var(--navy);
+    margin-top:18px;
+  }
+  .tag-price span{font-size:13px;color:rgba(26,39,51,0.55);font-weight:400;}
+  .tag hr{border:none;border-top:1px dashed var(--line);margin:22px 0;}
+  .tag ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .tag ul li{
+    font-size:13.5px;
+    line-height:1.55;
+    color:rgba(26,39,51,0.78);
+    padding-left:18px;
+    position:relative;
+  }
+  .tag ul li::before{
+    content:"—";
+    position:absolute;left:0;top:0;
+    color:var(--gold);
+  }
+
+  .tag--featured{
+    flex:0 0 320px;
+    background:linear-gradient(165deg, #ffffff, var(--ivory-dim));
+    transform:rotate(0deg) scale(1.04);
+    border:1.5px solid var(--gold);
+    box-shadow:0 30px 70px -18px rgba(184,134,59,0.35);
+    z-index:2;
+  }
+  .tag--featured .tag-hole{background:var(--gold);}
+  .tag--featured .badge{
+    position:absolute;top:-14px;right:22px;
+    background:var(--gold);
+    color:var(--navy-deep);
+    font-family:var(--mono);
+    font-size:10.5px;
+    font-weight:500;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border-radius:20px;
+  }
+  .variant-toggle{
+    display:flex;
+    gap:6px;
+    background:var(--ivory-dim);
+    border-radius:20px;
+    padding:4px;
+    margin-top:20px;
+  }
+  .variant-toggle button{
+    flex:1;
+    border:none;
+    background:transparent;
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.03em;
+    padding:9px 6px;
+    border-radius:16px;
+    cursor:pointer;
+    color:rgba(26,39,51,0.55);
+    transition:all .25s ease;
+  }
+  .variant-toggle button.active{
+    background:var(--navy);
+    color:var(--ivory);
+  }
+  .variant-panel{display:none;}
+  .variant-panel.active{display:block;}
+
+  /* ---------- estrategia note ---------- */
+  .estrategia-note{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+    margin-top:10px;
+  }
+  .estrategia-note p{
+    font-size:14px;
+    line-height:1.7;
+    color:rgba(247,244,238,0.5);
+    max-width:64ch;
+  }
+  .estrategia-note strong{color:var(--gold-bright);font-weight:500;}
+
+  /* ---------- regras de ouro ---------- */
+  .regras{background:var(--ivory);}
+  .regras-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:760px){ .regras-grid{grid-template-columns:1fr;} }
+  .regra{
+    background:var(--ivory);
+    padding:44px 40px;
+  }
+  .regra .tab{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    background:rgba(184,134,59,0.1);
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:3px;
+  }
+  .regra h3{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:21px;
+    margin-top:18px;
+    color:var(--navy);
+  }
+  .regra p{
+    margin-top:14px;
+    font-size:14.5px;
+    line-height:1.7;
+    color:rgba(26,39,51,0.7);
+  }
+  .regra .example{
+    margin-top:16px;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--navy);
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:2px solid var(--gold);
+    padding:12px 14px;
+    line-height:1.5;
+  }
+
+  /* ---------- cta ---------- */
+  .cta{
+    background:var(--navy-deep);
+    color:var(--ivory);
+    text-align:center;
+    padding:140px 32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta::before{
+    content:"";
+    position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 70% at 50% 100%, rgba(184,134,59,0.22), transparent 70%);
+  }
+  .cta-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;}
+  .cta .eyebrow{justify-content:center;color:var(--gold-bright);}
+  .cta .eyebrow::before{display:none;}
+  .cta h2{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(2rem,4.4vw,3.4rem);
+    line-height:1.1;
+    margin-top:20px;
+  }
+  .cta h2 em{color:var(--gold-bright);font-style:italic;}
+  .cta p{
+    margin-top:22px;
+    font-size:16px;
+    color:rgba(247,244,238,0.62);
+    line-height:1.7;
+  }
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:40px;
+    background:var(--gold);
+    color:var(--navy-deep);
+    font-family:var(--body);
+    font-weight:600;
+    font-size:15px;
+    padding:17px 32px;
+    border-radius:3px;
+    text-decoration:none;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .cta-btn:hover{background:var(--gold-bright);transform:translateY(-2px);}
+
+  footer{
+    background:var(--navy-deep);
+    border-top:1px solid var(--line-dark);
+    padding:36px 32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  footer .logo-mark{color:var(--ivory);}
+  footer .logo-mark span{color:var(--gold-bright);border-color:var(--line-dark);}
+  footer small{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:rgba(247,244,238,0.4);
+    letter-spacing:0.03em;
+  }
+
+  @media (max-width:600px){
+    .wrap{padding:0 20px;}
+    header{padding:18px 20px;}
+    section{padding:90px 0;}
+    .hero{padding:120px 20px 80px;}
+    .estrategia-note{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark">Asaph Maia <span>Imobvídeos</span></div>
+  <nav class="links">
+    <a href="#momento">O momento</a>
+    <a href="#pacotes">Pacotes</a>
+    <a href="#regras">Como trabalhamos</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-thread"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Proposta comercial</div>
+    <h1 class="hero-title">Sua loja já abriu. <em>Sua presença digital</em> começa agora.</h1>
+    <p class="hero-sub">Uma vitrine física precisa de uma vitrine viva no Instagram — gravada, editada e publicada por quem entende de conteúdo, para você focar em vender.</p>
+    <div class="hero-meta">
+      <div><strong>Asaph Maia Imobvídeos</strong>Conteúdo em vídeo e consultoria de imagem</div>
+      <div><strong>3 formatos</strong>Do essencial ao domínio completo de marca</div>
+      <div><strong>Recomendado</strong>Pacote 2 — Autoridade &amp; Consultoria</div>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="bar"></div>ROLE PARA VER A PROPOSTA</div>
+</section>
+
+<section class="momento" id="momento">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">O momento</div>
+      <h2>Loja nova, público ainda não sabe que ela existe.</h2>
+      <p>Inauguração é o momento de maior atenção espontânea — e o de maior risco de silêncio, se ninguém estiver gravando o que acontece na loja todos os dias.</p>
+    </div>
+    <div class="momento-grid">
+      <div class="momento-card">
+        <h3>Por que agora</h3>
+        <p>Todo dia sem conteúdo é um dia de vitrine vazia no feed. A loja física já está pronta — falta o Instagram acompanhar no mesmo ritmo, com prova real de produto, provador e atendimento, publicada com constância.</p>
+      </div>
+      <div class="momento-list">
+        <div class="momento-item">
+          <div class="dot"></div>
+          <p><strong>Sem gravação própria.</strong> A rotina da loja não para para virar conteúdo — por isso visitamos fisicamente, em dias e horários fixos.</p>
+        </div>
+        <div class="momento-item">
+          <div class="dot"></div>
+          <p><strong>Sem modelagem interna.</strong> Peça no manequim não vende como peça no corpo — por isso oferecemos rosto de marca a partir do Pacote 2.</p>
+        </div>
+        <div class="momento-item">
+          <div class="dot"></div>
+          <p><strong>Sem calendário de datas quentes.</strong> Dia dos Pais, Black Friday e outras datas exigem planejamento com semanas de antecedência.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pacotes" id="pacotes">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Os pacotes</div>
+      <h2>Três formatos de entrega, um caminho recomendado.</h2>
+      <p>O Pacote 1 mostra o essencial funcionando. O Pacote 3 mostra até onde dá para chegar. Para o momento atual da loja, o ponto de equilíbrio entre investimento e resultado é o Pacote 2.</p>
+    </div>
+  </div>
+
+  <div class="rack wrap">
+    <div class="tag">
+      <div class="tag-hole"></div>
+      <div class="tag-name">Pacote 01</div>
+      <div class="tag-title">Vitrine Ativa</div>
+      <div class="tag-price">R$ 600<span>/mês</span></div>
+      <hr>
+      <ul>
+        <li>8 posts no feed por mês</li>
+        <li>4 Reels curtos de produto</li>
+        <li>4 carrosséis estáticos</li>
+        <li>Lista de ideias de stories para a própria loja gravar</li>
+        <li>Sem modelagem — manequins e cabides</li>
+      </ul>
+    </div>
+
+    <div class="tag tag--featured">
+      <div class="badge">Recomendado</div>
+      <div class="tag-hole"></div>
+      <div class="tag-name">Pacote 02</div>
+      <div class="tag-title">Autoridade &amp; Consultoria</div>
+
+      <div class="variant-toggle">
+        <button class="active" data-variant="a">Opção A</button>
+        <button data-variant="b">Opção B</button>
+      </div>
+
+      <div class="variant-panel active" data-panel="a">
+        <div class="tag-price">R$ 1.000<span>/mês</span></div>
+        <hr>
+        <ul>
+          <li>12 posts no feed por mês</li>
+          <li>6 Reels de tendências e provadores</li>
+          <li>6 carrosséis de consultoria de moda</li>
+          <li>2 visitas semanais na loja para gravação</li>
+          <li>Modelagem com rosto de marca</li>
+          <li>Campanhas planejadas para datas quentes</li>
+        </ul>
+      </div>
+
+      <div class="variant-panel" data-panel="b">
+        <div class="tag-price">R$ 1.300<span>/mês</span></div>
+        <hr>
+        <ul>
+          <li>Tudo da Opção A</li>
+          <li>Catálogo digital organizado (WhatsApp Business ou Linktree)</li>
+          <li>Automação de mensagens de saudação</li>
+          <li>Atendimento inicial mais rápido para a cliente final</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tag">
+      <div class="tag-hole"></div>
+      <div class="tag-name">Pacote 03</div>
+      <div class="tag-title">Domínio de Marca</div>
+      <div class="tag-price">R$ 1.800<span>/mês</span></div>
+      <hr>
+      <ul>
+        <li>15 posts no feed por mês</li>
+        <li>3 visitas semanais na loja</li>
+        <li>Presença intensa de rosto de marca</li>
+        <li>Organização total do perfil — bio, destaques, stories</li>
+        <li>Catálogo digital incluído</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="estrategia-note">
+    <p>Por que a Opção B do Pacote 2 costuma ser a mais eficiente: soma consultoria de conteúdo e organização de vendas — o catálogo e a automação tiram do seu telefone o trabalho manual de responder a mesma pergunta repetidas vezes.</p>
+  </div>
+</section>
+
+<section class="regras" id="regras">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Como trabalhamos</div>
+      <h2>Regras claras para uma parceria sem ruído.</h2>
+      <p>Duas combinações simples evitam que a rotina de gravação vire imprevisível para a loja.</p>
+    </div>
+  </div>
+  <div class="regras-grid">
+    <div class="regra">
+      <span class="tab">Disciplina de horário</span>
+      <h3>Dia e hora fixos, sempre.</h3>
+      <p>Gravações acontecem em uma janela combinada por semana — nunca "a qualquer hora". Isso protege a rotina da loja e a qualidade do material.</p>
+      <div class="example">Ex.: toda terça e quinta, das 14h às 16h.</div>
+    </div>
+    <div class="regra">
+      <span class="tab">Um único contato</span>
+      <h3>Uma pessoa centraliza a conversa.</h3>
+      <p>Todo alinhamento sobre conteúdo, prazos e ajustes passa por um único ponto de contato da nossa equipe — para você ter uma resposta clara, sempre da mesma pessoa.</p>
+      <div class="example">Sem grupos com múltiplas opiniões simultâneas.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <div class="eyebrow">Próximo passo</div>
+    <h2>Vamos colocar a loja <em>no feed</em> com a mesma força que ela tem na vitrine?</h2>
+    <p>Escolha o formato que faz sentido para este momento da loja — o Pacote 2 é o que recomendamos para quem acabou de abrir as portas.</p>
+    <a href="#pacotes" class="cta-btn">Rever os pacotes ↑</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo-mark">Asaph Maia <span>Imobvídeos</span></div>
+  <small>PROPOSTA COMERCIAL — CONFIDENCIAL</small>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero entrance
+const heroTl = gsap.timeline({defaults:{ease:"power3.out"}});
+heroTl.from(".hero .eyebrow", {opacity:0, y:14, duration:0.7})
+      .from(".hero-title", {opacity:0, y:30, duration:0.9}, "-=0.4")
+      .from(".hero-sub", {opacity:0, y:20, duration:0.8}, "-=0.5")
+      .from(".hero-meta > div", {opacity:0, y:16, duration:0.6, stagger:0.12}, "-=0.4")
+      .from(".scroll-cue", {opacity:0, duration:0.6}, "-=0.3");
+
+gsap.to(".hero-thread", {opacity:0.15, duration:2, repeat:-1, yoyo:true, ease:"sine.inOut"});
+
+// Section heads reveal
+document.querySelectorAll(".section-head").forEach(el=>{
+  gsap.from(el.children, {
+    opacity:0, y:26, duration:0.8, stagger:0.08, ease:"power3.out",
+    scrollTrigger:{ trigger: el, start:"top 82%" }
+  });
+});
+
+// Momento cards
+gsap.from(".momento-card", {
+  opacity:0, x:-24, duration:0.8, ease:"power3.out",
+  scrollTrigger:{ trigger:".momento-grid", start:"top 78%" }
+});
+gsap.from(".momento-item", {
+  opacity:0, x:24, duration:0.6, stagger:0.12, ease:"power3.out",
+  scrollTrigger:{ trigger:".momento-list", start:"top 78%" }
+});
+
+// Tags swing in
+gsap.utils.toArray(".tag").forEach((tag, i)=>{
+  gsap.from(tag, {
+    opacity:0,
+    y:50,
+    rotate: i % 2 === 0 ? -8 : 8,
+    duration:0.9,
+    ease:"back.out(1.6)",
+    delay: i * 0.08,
+    scrollTrigger:{ trigger:".rack", start:"top 75%" }
+  });
+});
+
+gsap.from(".estrategia-note p", {
+  opacity:0, y:16, duration:0.8,
+  scrollTrigger:{ trigger:".estrategia-note", start:"top 90%" }
+});
+
+// Regras
+gsap.from(".regra", {
+  opacity:0, y:30, duration:0.8, stagger:0.15, ease:"power3.out",
+  scrollTrigger:{ trigger:".regras-grid", start:"top 80%" }
+});
+
+// CTA
+gsap.from(".cta-inner > *", {
+  opacity:0, y:24, duration:0.8, stagger:0.1, ease:"power3.out",
+  scrollTrigger:{ trigger:".cta", start:"top 75%" }
+});
+
+// Header background on scroll
+ScrollTrigger.create({
+  start: 100,
+  end: 99999,
+  toggleClass: {targets:"header", className:"scrolled"}
+});
+
+// Variant toggle for Pacote 2
+document.querySelectorAll(".variant-toggle button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const variant = btn.dataset.variant;
+    document.querySelectorAll(".variant-toggle button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const panels = document.querySelectorAll(".variant-panel");
+    panels.forEach(p=>{
+      if(p.dataset.panel === variant){
+        gsap.fromTo(p, {opacity:0, y:8}, {opacity:1, y:0, duration:0.35, ease:"power2.out"});
+        p.classList.add("active");
+      } else {
+        p.classList.remove("active");
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
